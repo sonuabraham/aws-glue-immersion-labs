@@ -39,21 +39,33 @@ job.init(args['JOB_NAME'], args)
 job.commit()
 EOF
 
-# Create sample CSV data for lab1
-cat > glue-workshop/data/lab1/csv/sales_data_2023_01.csv << 'EOF'
-Region,Country,Item Type,Sales Channel,Order Priority,Order Date,Order ID,Ship Date,Units Sold,Unit Price,Unit Cost,Total Revenue,Total Cost,Total Profit
-Sub-Saharan Africa,Chad,Office Supplies,Online,L,1/27/2023,292494523,2/12/2023,4484,651.21,524.96,2920025.64,2353920.64,566105.00
-Europe,Latvia,Beverages,Online,C,12/28/2022,361825549,1/23/2023,1075,47.45,31.79,51008.75,34174.25,16834.50
-Sub-Saharan Africa,Ivory Coast,Baby Food,Offline,M,4/10/2023,630627222,5/4/2023,9841,255.28,159.42,2512595.48,1568806.22,943789.26
-Asia,Mongolia,Cereal,Online,C,2/15/2023,735752273,3/10/2023,3716,205.70,117.11,764220.20,435176.76,329043.44
-Sub-Saharan Africa,Senegal,Clothes,Offline,M,7/23/2023,366638053,8/20/2023,2397,109.28,35.84,261950.16,85908.48,176041.68
+# Create sample CSV data for lab1 (sample.csv as expected by workshop)
+cat > glue-workshop/data/lab1/csv/sample.csv << 'EOF'
+uuid,Country,Item Type,Sales Channel,Order Priority,Order Date,Region,Ship Date,Units Sold,Unit Price,Unit Cost,Total Revenue,Total Cost,Total Profit
+292494523,Chad,Office Supplies,Online,L,1/27/2023,Sub-Saharan Africa,2/12/2023,4484,651.21,524.96,2920025.64,2353920.64,566105.00
+361825549,Latvia,Beverages,Online,C,12/28/2022,Europe,1/23/2023,1075,47.45,31.79,51008.75,34174.25,16834.50
+630627222,Ivory Coast,Baby Food,Offline,M,4/10/2023,Sub-Saharan Africa,5/4/2023,9841,255.28,159.42,2512595.48,1568806.22,943789.26
+735752273,Mongolia,Cereal,Online,C,2/15/2023,Asia,3/10/2023,3716,205.70,117.11,764220.20,435176.76,329043.44
+366638053,Senegal,Clothes,Offline,M,7/23/2023,Sub-Saharan Africa,8/20/2023,2397,109.28,35.84,261950.16,85908.48,176041.68
+486449991,Denmark,Household,Offline,L,5/15/2023,Europe,6/19/2023,6989,668.27,502.54,4670101.03,3512252.06,1157848.97
+926419347,Senegal,Household,Online,H,1/9/2023,Sub-Saharan Africa,2/7/2023,7293,668.27,502.54,4873863.11,3665022.22,1208840.89
+116607876,Sri Lanka,Baby Food,Online,C,3/17/2023,Asia,4/27/2023,2974,255.28,159.42,759182.72,474142.08,285040.64
+880811536,Burkina Faso,Vegetables,Offline,H,7/17/2023,Sub-Saharan Africa,8/28/2023,8933,154.06,90.93,1375909.98,812196.69,563713.29
+203025907,Mongolia,Fruits,Offline,H,2/25/2023,Asia,4/5/2023,7332,9.33,6.92,68405.56,50729.44,17676.12
 EOF
 
-# Create sample JSON data for lab1
-cat > glue-workshop/data/lab1/json/sales_data_2023_01.json << 'EOF'
-{"region":"Sub-Saharan Africa","country":"Chad","itemType":"Office Supplies","salesChannel":"Online","orderPriority":"L","orderDate":"1/27/2023","orderId":"292494523","shipDate":"2/12/2023","unitsSold":"4484","unitPrice":"651.21","unitCost":"524.96","totalRevenue":"2920025.64","totalCost":"2353920.64","totalProfit":"566105.00"}
-{"region":"Europe","country":"Latvia","itemType":"Beverages","salesChannel":"Online","orderPriority":"C","orderDate":"12/28/2022","orderId":"361825549","shipDate":"1/23/2023","unitsSold":"1075","unitPrice":"47.45","unitCost":"31.79","totalRevenue":"51008.75","totalCost":"34174.25","totalProfit":"16834.50"}
-{"region":"Sub-Saharan Africa","country":"Ivory Coast","itemType":"Baby Food","salesChannel":"Offline","orderPriority":"M","orderDate":"4/10/2023","orderId":"630627222","shipDate":"5/4/2023","unitsSold":"9841","unitPrice":"255.28","unitCost":"159.42","totalRevenue":"2512595.48","totalCost":"1568806.22","totalProfit":"943789.26"}
+# Create sample JSON data for lab1 (COVID-19 data as per workshop)
+cat > glue-workshop/data/lab1/json/sample.json << 'EOF'
+{"date":20210315,"state":"CA","positive":3654402,"hospitalized":45203,"death":56146,"total":49646310,"hash":"7d3ca89203209e2a3d4b7c3f7b8e4c5d","datechecked":"2021-03-15T00:00:00Z","totaltestresults":49646310,"flu":"","positiveincrease":3816,"negativeincrease":112456,"totalresultsincrease":116272,"deathincrease":258,"hospitalizedincrease":0}
+{"date":20210314,"state":"CA","positive":3650586,"hospitalized":45203,"death":55888,"total":49530038,"hash":"8e4db9a314310f3b4e5c8d4f8c9f5e6e","datechecked":"2021-03-14T00:00:00Z","totaltestresults":49530038,"flu":"","positiveincrease":4291,"negativeincrease":111456,"totalresultsincrease":115747,"deathincrease":215,"hospitalizedincrease":0}
+{"date":20210313,"state":"CA","positive":3646295,"hospitalized":45203,"death":55673,"total":49414291,"hash":"9f5eca0425421g4c5f6d9e5g9d0g6f7f","datechecked":"2021-03-13T00:00:00Z","totaltestresults":49414291,"flu":"","positiveincrease":4515,"negativeincrease":108232,"totalresultsincrease":112747,"deathincrease":198,"hospitalizedincrease":0}
+{"date":20210315,"state":"NY","positive":1820497,"hospitalized":85594,"death":49113,"total":39371453,"hash":"a0g6fd1536532h5d6g7e0f6h0e1h7g8g","datechecked":"2021-03-15T00:00:00Z","totaltestresults":39371453,"flu":"","positiveincrease":5902,"negativeincrease":145678,"totalresultsincrease":151580,"deathincrease":42,"hospitalizedincrease":0}
+{"date":20210314,"state":"NY","positive":1814595,"hospitalized":85594,"death":49071,"total":39219873,"hash":"b1h7ge2647643i6e7h8f1g7i1f2i8h9h","datechecked":"2021-03-14T00:00:00Z","totaltestresults":39219873,"flu":"","positiveincrease":6234,"negativeincrease":142345,"totalresultsincrease":148579,"deathincrease":38,"hospitalizedincrease":0}
+{"date":20210313,"state":"NY","positive":1808361,"hospitalized":85594,"death":49033,"total":39071294,"hash":"c2i8hf3758754j7f8i9g2h8j2g3j9i0i","datechecked":"2021-03-13T00:00:00Z","totaltestresults":39071294,"flu":"","positiveincrease":6789,"negativeincrease":138901,"totalresultsincrease":145690,"deathincrease":45,"hospitalizedincrease":0}
+{"date":20210315,"state":"TX","positive":2738635,"hospitalized":null,"death":46151,"total":21738635,"hash":"d3j9ig4869865k8g9j0h3i9k3h4k0j1j","datechecked":"2021-03-15T00:00:00Z","totaltestresults":21738635,"flu":"","positiveincrease":3456,"negativeincrease":89234,"totalresultsincrease":92690,"deathincrease":156,"hospitalizedincrease":0}
+{"date":20210314,"state":"TX","positive":2735179,"hospitalized":null,"death":45995,"total":21645945,"hash":"e4k0jh5970976l9h0k1i4j0l4i5l1k2k","datechecked":"2021-03-14T00:00:00Z","totaltestresults":21645945,"flu":"","positiveincrease":3678,"negativeincrease":86567,"totalresultsincrease":90245,"deathincrease":148,"hospitalizedincrease":0}
+{"date":20210313,"state":"TX","positive":2731501,"hospitalized":null,"death":45847,"total":21555700,"hash":"f5l1ki6081087m0i1l2j5k1m5j6m2l3l","datechecked":"2021-03-13T00:00:00Z","totaltestresults":21555700,"flu":"","positiveincrease":3892,"negativeincrease":84353,"totalresultsincrease":88245,"deathincrease":142,"hospitalizedincrease":0}
+{"date":20210315,"state":"FL","positive":1985475,"hospitalized":82053,"death":32629,"total":23985475,"hash":"g6m2lj7192198n1j2m3k6l2n6k7n3m4m","datechecked":"2021-03-15T00:00:00Z","totaltestresults":23985475,"flu":"","positiveincrease":4567,"negativeincrease":98765,"totalresultsincrease":103332,"deathincrease":89,"hospitalizedincrease":0}
 EOF
 
 # Create event notification folder README

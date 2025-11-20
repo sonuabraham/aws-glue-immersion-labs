@@ -23,49 +23,138 @@ Sample sales data in CSV format with the following schema:
 - Total Profit
 
 **Files:**
-- `sales_data_2023_01.csv` - 20 records
-- `sales_data_2023_02.csv` - 20 records
+- `sample.csv` - 10 records (as expected by the workshop)
 
 ### 2. JSON Data (`input/lab1/json/`)
-Same sales data in JSON format (newline-delimited JSON).
+COVID-19 testing data in JSON format (newline-delimited JSON).
+
+**Schema:**
+- date (integer) - Date in YYYYMMDD format
+- state (string) - US state code
+- positive (double) - Positive test results
+- hospitalized (double) - Hospitalized count
+- death (double) - Death count
+- total (double) - Total tests
+- hash (string) - Data hash
+- datechecked (string) - Timestamp
+- totaltestresults (double) - Total test results
+- flu (string) - Flu data
+- positiveincrease (double) - Daily positive increase
+- negativeincrease (double) - Daily negative increase
+- totalresultsincrease (double) - Daily total increase
+- deathincrease (double) - Daily death increase
+- hospitalizedincrease (double) - Daily hospitalization increase
 
 **Files:**
-- `sales_data_2023_01.json` - 10 records
+- `sample.json` - 10 records of COVID-19 data
 
 ### 3. Event Notification Folder (`input/lab1/eventnotification/`)
 Empty folder configured with S3 event notifications to trigger SQS messages.
 
-## Lab1 Exercises
+## Lab1 Exercises (From Official Workshop)
 
-### Exercise 1: Create a Crawler
-1. Navigate to AWS Glue Console
-2. Create a crawler to scan `s3://${BUCKET_NAME}/input/lab1/csv/`
-3. Run the crawler to populate the Data Catalog
+### Prerequisites
+View the sample data:
+```bash
+head ~/environment/glue-workshop/data/lab1/csv/sample.csv
+```
 
+### Exercise 1: Create a Database
+1. Go to AWS Glue Console → Databases
+2. You should see `glueworkshop_cloudformation` (created by CloudFormation)
+3. Click "Add Database"
+4. Name it `console_glueworkshop`
+5. Click "Create Database"
+
+### Exercise 2: Create a Crawler
+1. Go to AWS Glue Console → Crawlers
+2. Click "Create Crawler"
+3. Name it `console-lab1`
+4. Click "Next"
+
+**Add Data Sources:**
+5. Click "Add a data source"
+6. Browse to `s3://${BUCKET_NAME}/input/lab1/csv/` (pick the folder, not the file)
+7. Click "Add an S3 data source"
+8. Click "Add a data source" again
+9. Browse to `s3://${BUCKET_NAME}/input/lab1/json/` (pick the folder, not the file)
+10. Click "Next"
+
+**Configure IAM Role:**
+11. Choose existing IAM role: `AWSGlueServiceRole-glueworkshop`
+12. Click "Next"
+
+**Set Output:**
+13. Target database: `console_glueworkshop`
+14. Table name prefix: `console_` (optional)
+15. Crawler schedule: On demand
+16. Click "Next"
+
+**Review and Create:**
+17. Review all parameters
+18. Click "Create crawler"
+
+### Exercise 3: Run the Crawler
+1. On the crawler details page, click "Run crawler"
+2. Wait 1-2 minutes for completion
+3. The crawler will use built-in CSV and JSON classifiers to infer schemas
+
+### Exercise 4: View Catalog Tables
+1. Go to AWS Glue Console → Tables
+2. You should see two new tables:
+   - `console_csv` - from the CSV data
+   - `console_json` - from the JSON data
+3. Click on each table to view the auto-generated schema
+
+**CLI Alternative:**
 ```bash
 # Create crawler via CLI
 aws glue create-crawler \
-  --name lab1-csv-crawler \
+  --name console-lab1 \
   --role AWSGlueServiceRole-glueworkshop \
-  --database-name glueworkshop_cloudformation \
-  --targets '{"S3Targets":[{"Path":"s3://'${BUCKET_NAME}'/input/lab1/csv/"}]}' \
-  --table-prefix lab1_csv_
+  --database-name console_glueworkshop \
+  --targets '{"S3Targets":[{"Path":"s3://'${BUCKET_NAME}'/input/lab1/csv/"},{"Path":"s3://'${BUCKET_NAME}'/input/lab1/json/"}]}' \
+  --table-prefix console_
 
 # Start the crawler
-aws glue start-crawler --name lab1-csv-crawler
+aws glue start-crawler --name console-lab1
+
+# Check crawler status
+aws glue get-crawler --name console-lab1 --query 'Crawler.State'
 ```
 
-### Exercise 2: Query Data with Athena
-Once the crawler completes, query the data:
+### Exercise 5: Query Data with Athena
+Once the crawler completes, query the cataloged data:
 
 ```sql
-SELECT region, country, item_type, 
-       SUM(CAST(total_revenue AS DOUBLE)) as total_revenue,
-       SUM(CAST(total_profit AS DOUBLE)) as total_profit
-FROM glueworkshop_cloudformation.lab1_csv_sales_data_2023_01
-GROUP BY region, country, item_type
+-- Query CSV table (Sales Data)
+SELECT region, country, itemtype, 
+       CAST(totalrevenue AS DOUBLE) as total_revenue,
+       CAST(totalprofit AS DOUBLE) as total_profit
+FROM console_glueworkshop.console_csv
 ORDER BY total_revenue DESC
 LIMIT 10;
+
+-- Query JSON table (COVID-19 Data)
+SELECT date, state, 
+       positive, death, hospitalized,
+       positiveincrease, deathincrease
+FROM console_glueworkshop.console_json
+ORDER BY positive DESC
+LIMIT 10;
+
+-- Count records in each table
+SELECT 'CSV (Sales)' as source, COUNT(*) as record_count FROM console_glueworkshop.console_csv
+UNION ALL
+SELECT 'JSON (COVID)' as source, COUNT(*) as record_count FROM console_glueworkshop.console_json;
+
+-- Analyze COVID data by state
+SELECT state,
+       SUM(positiveincrease) as total_positive_increase,
+       SUM(deathincrease) as total_death_increase
+FROM console_glueworkshop.console_json
+GROUP BY state
+ORDER BY total_positive_increase DESC;
 ```
 
 ### Exercise 3: Create a Glue ETL Job
@@ -131,8 +220,14 @@ aws s3 ls s3://${BUCKET_NAME}/input/lab1/csv/
 # List JSON files
 aws s3 ls s3://${BUCKET_NAME}/input/lab1/json/
 
-# Count records in CSV
-aws s3 cp s3://${BUCKET_NAME}/input/lab1/csv/sales_data_2023_01.csv - | wc -l
+# View CSV content
+aws s3 cp s3://${BUCKET_NAME}/input/lab1/csv/sample.csv - | head
+
+# Count records in CSV (should be 11 lines: 1 header + 10 data rows)
+aws s3 cp s3://${BUCKET_NAME}/input/lab1/csv/sample.csv - | wc -l
+
+# View JSON content
+aws s3 cp s3://${BUCKET_NAME}/input/lab1/json/sample.json - | head
 ```
 
 ## Common Lab1 Tasks

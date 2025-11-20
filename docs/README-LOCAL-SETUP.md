@@ -26,7 +26,7 @@ First, deploy the infrastructure using the updated CloudFormation template:
 ```bash
 aws cloudformation create-stack \
   --stack-name glue-workshop \
-  --template-body file://GlueImmersionDay-LocalDeployment-v2.yaml \
+  --template-body file://infra/GlueImmersionDay-LocalDeployment-v2.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region <your-region>
 ```
@@ -43,8 +43,10 @@ aws cloudformation wait stack-create-complete \
 Run the script to create the glue-workshop directory structure:
 
 ```bash
+cd scripts
 chmod +x create-glue-workshop-zip.sh
 ./create-glue-workshop-zip.sh
+cd ..
 ```
 
 This creates:
@@ -84,8 +86,8 @@ The setup script will:
 
 ```bash
 cd ~/environment
-chmod +x one-step-setup.sh
-./one-step-setup.sh "<workshop-url-or-dummy-value>"
+chmod +x scripts/one-step-setup.sh
+./scripts/one-step-setup.sh "<workshop-url-or-dummy-value>"
 ```
 
 **Note:** The workshop URL parameter is optional now. If you don't have one, just pass a dummy value like "local".
