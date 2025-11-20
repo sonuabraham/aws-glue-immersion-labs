@@ -1,0 +1,245 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: AWS Glue Workshop Infrastructure - Lab 1 Only (Minimal Deployment)
+
+Resources:
+  # VPC and Networking (Minimal for Glue)
+  WorkshopVPC:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: 10.2.0.0/16
+      EnableDnsHostnames: "true"
+      EnableDnsSupport: "true"
+      Tags:
+        - Key: Name
+          Value: "glueworkshop-lab1"
+
+  InternetGateway:
+    Type: "AWS::EC2::InternetGateway"
+    Properties:
+      Tags:
+        - Key: Name
+          Value: "glueworkshop-lab1-igw"
+
+  AttachGateway:
+    Type: "AWS::EC2::VPCGatewayAttachment"
+    Properties:
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref WorkshopVPC
+
+  WorkshopSubnet1:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      AvailabilityZone: !Select ["0", !GetAZs ""]
+      CidrBlock: 10.2.0.0/26
+      VpcId: !Ref WorkshopVPC
+      Tags:
+        - Key: Name
+          Value: "glueworkshop-lab1-subnet1"
+
+  RouteTable1:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      Tags:
+        - Key: Name
+          Value: "glueworkshop-lab1-routetable"
+      VpcId: !Ref WorkshopVPC
+
+  Route1:
+    Type: "AWS::EC2::Route"
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+      RouteTableId: !Ref RouteTable1
+
+  SubnetRouteTableAssociation1:
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties:
+      RouteTableId: !Ref RouteTable1
+      SubnetId: !Ref WorkshopSubnet1
+
+  # S3 VPC Endpoint
+  S3Endpoint:
+    Type: "AWS::EC2::VPCEndpoint"
+    Properties:
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal: "*"
+            Action: "*"
+            Resource: "*"
+      ServiceName: !Sub "com.amazonaws.${AWS::Region}.s3"
+      RouteTableIds: [!Ref RouteTable1]
+      VpcEndpointType: Gateway
+      VpcId: !Ref WorkshopVPC
+
+  # Security Group
+  DefaultVPCSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: Security Group for Lab1 Glue Workshop
+      VpcId: !Ref WorkshopVPC
+      Tags:
+        - Key: Name
+          Value: "glueworkshop-lab1-sg"
+
+  DefaultVPCSecurityGroupSelfRefIngress:
+    Type: "AWS::EC2::SecurityGroupIngress"
+    Properties:
+      SourceSecurityGroupId: !Ref DefaultVPCSecurityGroup
+      IpProtocol: "-1"
+      GroupId: !Ref DefaultVPCSecurityGroup
+
+  # S3 Bucket for Lab1
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "glueworkshop-lab1-${AWS::AccountId}-${AWS::Region}"
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: True
+        BlockPublicPolicy: True
+        IgnorePublicAcls: True
+        RestrictPublicBuckets: True
+      NotificationConfiguration:
+        QueueConfigurations:
+          - Event: "s3:ObjectCreated:*"
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: input/lab1/eventnotification/
+            Queue: !GetAtt Lab1EventQueue.Arn
+
+  # SQS Queue for Lab1 Event Notifications
+  Lab1EventQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: "glueworkshop-lab1-event-queue"
+
+  Lab1EventQueuePolicy:
+    Type: AWS::SQS::QueuePolicy
+    Properties:
+      PolicyDocument:
+        Id: glueworkshop-lab1-event-queue-policy
+        Version: "2012-10-17"
+        Statement:
+          - Sid: S3Permission
+            Effect: Allow
+            Principal:
+              Service: s3.amazonaws.com
+            Action:
+              - SQS:SendMessage
+            Resource: !GetAtt Lab1EventQueue.Arn
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+              ArnLike:
+                aws:SourceArn: !Sub "arn:aws:s3:::glueworkshop-lab1-${AWS::AccountId}-${AWS::Region}"
+      Queues:
+        - !Ref Lab1EventQueue
+
+  # IAM Role for Glue
+  AWSGlueServiceRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: AWSGlueServiceRole-glueworkshop-lab1
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: glue.amazonaws.com
+            Action: "sts:AssumeRole"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
+      Policies:
+        - PolicyName: GlueS3Access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "s3:GetObject"
+                  - "s3:PutObject"
+                  - "s3:DeleteObject"
+                  - "s3:ListBucket"
+                Resource:
+                  - !Sub "arn:aws:s3:::glueworkshop-lab1-${AWS::AccountId}-${AWS::Region}"
+                  - !Sub "arn:aws:s3:::glueworkshop-lab1-${AWS::AccountId}-${AWS::Region}/*"
+        - PolicyName: GlueLogsAccess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "logs:CreateLogGroup"
+                  - "logs:CreateLogStream"
+                  - "logs:PutLogEvents"
+                Resource: "arn:aws:logs:*:*:/aws-glue/*"
+
+  # Glue Catalog Database
+  GlueCatalogDatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseInput:
+        Name: glueworkshop_lab1
+        Description: Database for Lab1 - AWS Glue Workshop
+
+Outputs:
+  S3BucketName:
+    Description: S3 bucket created for Lab1
+    Value: !Ref S3Bucket
+    Export:
+      Name: !Sub "${AWS::StackName}-S3Bucket"
+
+  SQSQueueURL:
+    Description: SQS Queue URL for Lab1 event notifications
+    Value: !Ref Lab1EventQueue
+    Export:
+      Name: !Sub "${AWS::StackName}-SQSQueueURL"
+
+  SQSQueueArn:
+    Description: SQS Queue ARN for Lab1 event notifications
+    Value: !GetAtt Lab1EventQueue.Arn
+    Export:
+      Name: !Sub "${AWS::StackName}-SQSQueueArn"
+
+  GlueServiceRoleArn:
+    Description: ARN of the Glue Service Role for Lab1
+    Value: !GetAtt AWSGlueServiceRole.Arn
+    Export:
+      Name: !Sub "${AWS::StackName}-GlueServiceRoleArn"
+
+  GlueServiceRoleName:
+    Description: Name of the Glue Service Role for Lab1
+    Value: !Ref AWSGlueServiceRole
+    Export:
+      Name: !Sub "${AWS::StackName}-GlueServiceRoleName"
+
+  GlueDatabaseName:
+    Description: Glue Catalog Database name for Lab1
+    Value: !Ref GlueCatalogDatabase
+    Export:
+      Name: !Sub "${AWS::StackName}-GlueDatabaseName"
+
+  VPCId:
+    Description: VPC ID for Lab1
+    Value: !Ref WorkshopVPC
+    Export:
+      Name: !Sub "${AWS::StackName}-VPCId"
+
+  SecurityGroupId:
+    Description: Security Group ID for Lab1
+    Value: !Ref DefaultVPCSecurityGroup
+    Export:
+      Name: !Sub "${AWS::StackName}-SecurityGroupId"
+
+  AWSRegion:
+    Description: AWS Region for Lab1
+    Value: !Sub ${AWS::Region}
+
+  AWSAccount:
+    Description: AWS Account ID for Lab1
+    Value: !Sub ${AWS::AccountId}
