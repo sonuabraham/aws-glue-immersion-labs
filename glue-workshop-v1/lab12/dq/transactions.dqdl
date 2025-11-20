@@ -1,0 +1,3 @@
+field amount { type: numeric; check: amount >= 0; severity: ERROR; }
+field currency { type: string; check: currency in ["AUD","USD"]; severity: WARN; }
+field transaction_date { type: datetime; check: transaction_date <= now(); severity: ERROR; }

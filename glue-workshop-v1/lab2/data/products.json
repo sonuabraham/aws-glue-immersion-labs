@@ -1,0 +1,1602 @@
+[
+  {
+    "product_id": 1,
+    "name": "Product 1",
+    "category": "Books",
+    "price": 891.12,
+    "currency": "AUD",
+    "in_stock": 467
+  },
+  {
+    "product_id": 2,
+    "name": "Product 2",
+    "category": "Books",
+    "price": 876.42,
+    "currency": "AUD",
+    "in_stock": 2
+  },
+  {
+    "product_id": 3,
+    "name": "Product 3",
+    "category": "Home",
+    "price": 1452.7,
+    "currency": "AUD",
+    "in_stock": 344
+  },
+  {
+    "product_id": 4,
+    "name": "Product 4",
+    "category": "Clothing",
+    "price": 1259.81,
+    "currency": "AUD",
+    "in_stock": 628
+  },
+  {
+    "product_id": 5,
+    "name": "Product 5",
+    "category": "Home",
+    "price": 1131.39,
+    "currency": "AUD",
+    "in_stock": 236
+  },
+  {
+    "product_id": 6,
+    "name": "Product 6",
+    "category": "Books",
+    "price": 1049.86,
+    "currency": "AUD",
+    "in_stock": 944
+  },
+  {
+    "product_id": 7,
+    "name": "Product 7",
+    "category": "Home",
+    "price": 536.37,
+    "currency": "AUD",
+    "in_stock": 480
+  },
+  {
+    "product_id": 8,
+    "name": "Product 8",
+    "category": "Books",
+    "price": 268.36,
+    "currency": "AUD",
+    "in_stock": 885
+  },
+  {
+    "product_id": 9,
+    "name": "Product 9",
+    "category": "Books",
+    "price": 311.06,
+    "currency": "AUD",
+    "in_stock": 397
+  },
+  {
+    "product_id": 10,
+    "name": "Product 10",
+    "category": "Sports",
+    "price": 659.76,
+    "currency": "AUD",
+    "in_stock": 750
+  },
+  {
+    "product_id": 11,
+    "name": "Product 11",
+    "category": "Books",
+    "price": 525.86,
+    "currency": "AUD",
+    "in_stock": 935
+  },
+  {
+    "product_id": 12,
+    "name": "Product 12",
+    "category": "Electronics",
+    "price": 1148.17,
+    "currency": "AUD",
+    "in_stock": 173
+  },
+  {
+    "product_id": 13,
+    "name": "Product 13",
+    "category": "Health",
+    "price": 210.95,
+    "currency": "AUD",
+    "in_stock": 499
+  },
+  {
+    "product_id": 14,
+    "name": "Product 14",
+    "category": "Clothing",
+    "price": 1357.99,
+    "currency": "AUD",
+    "in_stock": 578
+  },
+  {
+    "product_id": 15,
+    "name": "Product 15",
+    "category": "Clothing",
+    "price": 1113.4,
+    "currency": "AUD",
+    "in_stock": 212
+  },
+  {
+    "product_id": 16,
+    "name": "Product 16",
+    "category": "Books",
+    "price": 878.88,
+    "currency": "AUD",
+    "in_stock": 512
+  },
+  {
+    "product_id": 17,
+    "name": "Product 17",
+    "category": "Home",
+    "price": 434.35,
+    "currency": "AUD",
+    "in_stock": 698
+  },
+  {
+    "product_id": 18,
+    "name": "Product 18",
+    "category": "Clothing",
+    "price": 400.19,
+    "currency": "AUD",
+    "in_stock": 196
+  },
+  {
+    "product_id": 19,
+    "name": "Product 19",
+    "category": "Home",
+    "price": 505.43,
+    "currency": "AUD",
+    "in_stock": 723
+  },
+  {
+    "product_id": 20,
+    "name": "Product 20",
+    "category": "Clothing",
+    "price": 1063.31,
+    "currency": "AUD",
+    "in_stock": 919
+  },
+  {
+    "product_id": 21,
+    "name": "Product 21",
+    "category": "Books",
+    "price": 761.17,
+    "currency": "AUD",
+    "in_stock": 435
+  },
+  {
+    "product_id": 22,
+    "name": "Product 22",
+    "category": "Clothing",
+    "price": 507.91,
+    "currency": "AUD",
+    "in_stock": 482
+  },
+  {
+    "product_id": 23,
+    "name": "Product 23",
+    "category": "Home",
+    "price": 504.12,
+    "currency": "AUD",
+    "in_stock": 557
+  },
+  {
+    "product_id": 24,
+    "name": "Product 24",
+    "category": "Sports",
+    "price": 494.52,
+    "currency": "AUD",
+    "in_stock": 398
+  },
+  {
+    "product_id": 25,
+    "name": "Product 25",
+    "category": "Books",
+    "price": 21.99,
+    "currency": "AUD",
+    "in_stock": 721
+  },
+  {
+    "product_id": 26,
+    "name": "Product 26",
+    "category": "Toys",
+    "price": 986.27,
+    "currency": "AUD",
+    "in_stock": 567
+  },
+  {
+    "product_id": 27,
+    "name": "Product 27",
+    "category": "Sports",
+    "price": 746.75,
+    "currency": "AUD",
+    "in_stock": 224
+  },
+  {
+    "product_id": 28,
+    "name": "Product 28",
+    "category": "Health",
+    "price": 953.27,
+    "currency": "AUD",
+    "in_stock": 183
+  },
+  {
+    "product_id": 29,
+    "name": "Product 29",
+    "category": "Sports",
+    "price": 1030.25,
+    "currency": "AUD",
+    "in_stock": 409
+  },
+  {
+    "product_id": 30,
+    "name": "Product 30",
+    "category": "Sports",
+    "price": 580.68,
+    "currency": "AUD",
+    "in_stock": 96
+  },
+  {
+    "product_id": 31,
+    "name": "Product 31",
+    "category": "Health",
+    "price": 575.8,
+    "currency": "AUD",
+    "in_stock": 885
+  },
+  {
+    "product_id": 32,
+    "name": "Product 32",
+    "category": "Health",
+    "price": 746.95,
+    "currency": "AUD",
+    "in_stock": 434
+  },
+  {
+    "product_id": 33,
+    "name": "Product 33",
+    "category": "Home",
+    "price": 186.33,
+    "currency": "AUD",
+    "in_stock": 188
+  },
+  {
+    "product_id": 34,
+    "name": "Product 34",
+    "category": "Sports",
+    "price": 265.15,
+    "currency": "AUD",
+    "in_stock": 322
+  },
+  {
+    "product_id": 35,
+    "name": "Product 35",
+    "category": "Sports",
+    "price": 227.88,
+    "currency": "AUD",
+    "in_stock": 898
+  },
+  {
+    "product_id": 36,
+    "name": "Product 36",
+    "category": "Sports",
+    "price": 1429.96,
+    "currency": "AUD",
+    "in_stock": 130
+  },
+  {
+    "product_id": 37,
+    "name": "Product 37",
+    "category": "Electronics",
+    "price": 872.5,
+    "currency": "AUD",
+    "in_stock": 568
+  },
+  {
+    "product_id": 38,
+    "name": "Product 38",
+    "category": "Books",
+    "price": 1053.69,
+    "currency": "AUD",
+    "in_stock": 198
+  },
+  {
+    "product_id": 39,
+    "name": "Product 39",
+    "category": "Books",
+    "price": 431.52,
+    "currency": "AUD",
+    "in_stock": 484
+  },
+  {
+    "product_id": 40,
+    "name": "Product 40",
+    "category": "Clothing",
+    "price": 984.31,
+    "currency": "AUD",
+    "in_stock": 667
+  },
+  {
+    "product_id": 41,
+    "name": "Product 41",
+    "category": "Electronics",
+    "price": 1314.94,
+    "currency": "AUD",
+    "in_stock": 685
+  },
+  {
+    "product_id": 42,
+    "name": "Product 42",
+    "category": "Books",
+    "price": 842.26,
+    "currency": "AUD",
+    "in_stock": 161
+  },
+  {
+    "product_id": 43,
+    "name": "Product 43",
+    "category": "Clothing",
+    "price": 625.33,
+    "currency": "AUD",
+    "in_stock": 991
+  },
+  {
+    "product_id": 44,
+    "name": "Product 44",
+    "category": "Clothing",
+    "price": 491.16,
+    "currency": "AUD",
+    "in_stock": 687
+  },
+  {
+    "product_id": 45,
+    "name": "Product 45",
+    "category": "Home",
+    "price": 450.67,
+    "currency": "AUD",
+    "in_stock": 628
+  },
+  {
+    "product_id": 46,
+    "name": "Product 46",
+    "category": "Home",
+    "price": 1193.99,
+    "currency": "AUD",
+    "in_stock": 638
+  },
+  {
+    "product_id": 47,
+    "name": "Product 47",
+    "category": "Toys",
+    "price": 1454.84,
+    "currency": "AUD",
+    "in_stock": 781
+  },
+  {
+    "product_id": 48,
+    "name": "Product 48",
+    "category": "Electronics",
+    "price": 1028.85,
+    "currency": "AUD",
+    "in_stock": 849
+  },
+  {
+    "product_id": 49,
+    "name": "Product 49",
+    "category": "Health",
+    "price": 759.48,
+    "currency": "AUD",
+    "in_stock": 737
+  },
+  {
+    "product_id": 50,
+    "name": "Product 50",
+    "category": "Clothing",
+    "price": 1334.43,
+    "currency": "AUD",
+    "in_stock": 902
+  },
+  {
+    "product_id": 51,
+    "name": "Product 51",
+    "category": "Electronics",
+    "price": 1398.1,
+    "currency": "AUD",
+    "in_stock": 20
+  },
+  {
+    "product_id": 52,
+    "name": "Product 52",
+    "category": "Health",
+    "price": 629.02,
+    "currency": "AUD",
+    "in_stock": 987
+  },
+  {
+    "product_id": 53,
+    "name": "Product 53",
+    "category": "Sports",
+    "price": 384.68,
+    "currency": "AUD",
+    "in_stock": 379
+  },
+  {
+    "product_id": 54,
+    "name": "Product 54",
+    "category": "Electronics",
+    "price": 119.21,
+    "currency": "AUD",
+    "in_stock": 918
+  },
+  {
+    "product_id": 55,
+    "name": "Product 55",
+    "category": "Clothing",
+    "price": 65.32,
+    "currency": "AUD",
+    "in_stock": 304
+  },
+  {
+    "product_id": 56,
+    "name": "Product 56",
+    "category": "Sports",
+    "price": 1095.93,
+    "currency": "AUD",
+    "in_stock": 703
+  },
+  {
+    "product_id": 57,
+    "name": "Product 57",
+    "category": "Books",
+    "price": 324.06,
+    "currency": "AUD",
+    "in_stock": 572
+  },
+  {
+    "product_id": 58,
+    "name": "Product 58",
+    "category": "Sports",
+    "price": 1469.58,
+    "currency": "AUD",
+    "in_stock": 801
+  },
+  {
+    "product_id": 59,
+    "name": "Product 59",
+    "category": "Toys",
+    "price": 619.76,
+    "currency": "AUD",
+    "in_stock": 962
+  },
+  {
+    "product_id": 60,
+    "name": "Product 60",
+    "category": "Toys",
+    "price": 610.34,
+    "currency": "AUD",
+    "in_stock": 217
+  },
+  {
+    "product_id": 61,
+    "name": "Product 61",
+    "category": "Toys",
+    "price": 303.08,
+    "currency": "AUD",
+    "in_stock": 780
+  },
+  {
+    "product_id": 62,
+    "name": "Product 62",
+    "category": "Electronics",
+    "price": 1404.57,
+    "currency": "AUD",
+    "in_stock": 844
+  },
+  {
+    "product_id": 63,
+    "name": "Product 63",
+    "category": "Books",
+    "price": 1103.94,
+    "currency": "AUD",
+    "in_stock": 15
+  },
+  {
+    "product_id": 64,
+    "name": "Product 64",
+    "category": "Sports",
+    "price": 1450.88,
+    "currency": "AUD",
+    "in_stock": 972
+  },
+  {
+    "product_id": 65,
+    "name": "Product 65",
+    "category": "Toys",
+    "price": 9.65,
+    "currency": "AUD",
+    "in_stock": 742
+  },
+  {
+    "product_id": 66,
+    "name": "Product 66",
+    "category": "Clothing",
+    "price": 1290.58,
+    "currency": "AUD",
+    "in_stock": 90
+  },
+  {
+    "product_id": 67,
+    "name": "Product 67",
+    "category": "Clothing",
+    "price": 1276.89,
+    "currency": "AUD",
+    "in_stock": 699
+  },
+  {
+    "product_id": 68,
+    "name": "Product 68",
+    "category": "Sports",
+    "price": 902.89,
+    "currency": "AUD",
+    "in_stock": 960
+  },
+  {
+    "product_id": 69,
+    "name": "Product 69",
+    "category": "Clothing",
+    "price": 450.72,
+    "currency": "AUD",
+    "in_stock": 243
+  },
+  {
+    "product_id": 70,
+    "name": "Product 70",
+    "category": "Home",
+    "price": 544.33,
+    "currency": "AUD",
+    "in_stock": 84
+  },
+  {
+    "product_id": 71,
+    "name": "Product 71",
+    "category": "Electronics",
+    "price": 82.24,
+    "currency": "AUD",
+    "in_stock": 59
+  },
+  {
+    "product_id": 72,
+    "name": "Product 72",
+    "category": "Electronics",
+    "price": 36.96,
+    "currency": "AUD",
+    "in_stock": 219
+  },
+  {
+    "product_id": 73,
+    "name": "Product 73",
+    "category": "Health",
+    "price": 1334.76,
+    "currency": "AUD",
+    "in_stock": 126
+  },
+  {
+    "product_id": 74,
+    "name": "Product 74",
+    "category": "Toys",
+    "price": 1125.1,
+    "currency": "AUD",
+    "in_stock": 249
+  },
+  {
+    "product_id": 75,
+    "name": "Product 75",
+    "category": "Books",
+    "price": 1074.6,
+    "currency": "AUD",
+    "in_stock": 969
+  },
+  {
+    "product_id": 76,
+    "name": "Product 76",
+    "category": "Clothing",
+    "price": 57.1,
+    "currency": "AUD",
+    "in_stock": 84
+  },
+  {
+    "product_id": 77,
+    "name": "Product 77",
+    "category": "Sports",
+    "price": 737.85,
+    "currency": "AUD",
+    "in_stock": 21
+  },
+  {
+    "product_id": 78,
+    "name": "Product 78",
+    "category": "Health",
+    "price": 37.54,
+    "currency": "AUD",
+    "in_stock": 914
+  },
+  {
+    "product_id": 79,
+    "name": "Product 79",
+    "category": "Sports",
+    "price": 467.62,
+    "currency": "AUD",
+    "in_stock": 150
+  },
+  {
+    "product_id": 80,
+    "name": "Product 80",
+    "category": "Sports",
+    "price": 314.59,
+    "currency": "AUD",
+    "in_stock": 198
+  },
+  {
+    "product_id": 81,
+    "name": "Product 81",
+    "category": "Home",
+    "price": 169.14,
+    "currency": "AUD",
+    "in_stock": 678
+  },
+  {
+    "product_id": 82,
+    "name": "Product 82",
+    "category": "Health",
+    "price": 348.83,
+    "currency": "AUD",
+    "in_stock": 656
+  },
+  {
+    "product_id": 83,
+    "name": "Product 83",
+    "category": "Clothing",
+    "price": 709.19,
+    "currency": "AUD",
+    "in_stock": 125
+  },
+  {
+    "product_id": 84,
+    "name": "Product 84",
+    "category": "Home",
+    "price": 316.79,
+    "currency": "AUD",
+    "in_stock": 323
+  },
+  {
+    "product_id": 85,
+    "name": "Product 85",
+    "category": "Toys",
+    "price": 1037.22,
+    "currency": "AUD",
+    "in_stock": 121
+  },
+  {
+    "product_id": 86,
+    "name": "Product 86",
+    "category": "Clothing",
+    "price": 1471.42,
+    "currency": "AUD",
+    "in_stock": 160
+  },
+  {
+    "product_id": 87,
+    "name": "Product 87",
+    "category": "Health",
+    "price": 882.74,
+    "currency": "AUD",
+    "in_stock": 93
+  },
+  {
+    "product_id": 88,
+    "name": "Product 88",
+    "category": "Clothing",
+    "price": 192.45,
+    "currency": "AUD",
+    "in_stock": 878
+  },
+  {
+    "product_id": 89,
+    "name": "Product 89",
+    "category": "Toys",
+    "price": 4.27,
+    "currency": "AUD",
+    "in_stock": 479
+  },
+  {
+    "product_id": 90,
+    "name": "Product 90",
+    "category": "Clothing",
+    "price": 1110.63,
+    "currency": "AUD",
+    "in_stock": 332
+  },
+  {
+    "product_id": 91,
+    "name": "Product 91",
+    "category": "Electronics",
+    "price": 372.85,
+    "currency": "AUD",
+    "in_stock": 799
+  },
+  {
+    "product_id": 92,
+    "name": "Product 92",
+    "category": "Health",
+    "price": 456.67,
+    "currency": "AUD",
+    "in_stock": 454
+  },
+  {
+    "product_id": 93,
+    "name": "Product 93",
+    "category": "Health",
+    "price": 429.39,
+    "currency": "AUD",
+    "in_stock": 827
+  },
+  {
+    "product_id": 94,
+    "name": "Product 94",
+    "category": "Toys",
+    "price": 952.34,
+    "currency": "AUD",
+    "in_stock": 875
+  },
+  {
+    "product_id": 95,
+    "name": "Product 95",
+    "category": "Clothing",
+    "price": 848.18,
+    "currency": "AUD",
+    "in_stock": 417
+  },
+  {
+    "product_id": 96,
+    "name": "Product 96",
+    "category": "Toys",
+    "price": 363.84,
+    "currency": "AUD",
+    "in_stock": 171
+  },
+  {
+    "product_id": 97,
+    "name": "Product 97",
+    "category": "Electronics",
+    "price": 211.69,
+    "currency": "AUD",
+    "in_stock": 332
+  },
+  {
+    "product_id": 98,
+    "name": "Product 98",
+    "category": "Health",
+    "price": 840.63,
+    "currency": "AUD",
+    "in_stock": 359
+  },
+  {
+    "product_id": 99,
+    "name": "Product 99",
+    "category": "Toys",
+    "price": 1141.17,
+    "currency": "AUD",
+    "in_stock": 188
+  },
+  {
+    "product_id": 100,
+    "name": "Product 100",
+    "category": "Health",
+    "price": 306.13,
+    "currency": "AUD",
+    "in_stock": 769
+  },
+  {
+    "product_id": 101,
+    "name": "Product 101",
+    "category": "Home",
+    "price": 808.23,
+    "currency": "AUD",
+    "in_stock": 557
+  },
+  {
+    "product_id": 102,
+    "name": "Product 102",
+    "category": "Clothing",
+    "price": 117.39,
+    "currency": "AUD",
+    "in_stock": 949
+  },
+  {
+    "product_id": 103,
+    "name": "Product 103",
+    "category": "Electronics",
+    "price": 130.41,
+    "currency": "AUD",
+    "in_stock": 420
+  },
+  {
+    "product_id": 104,
+    "name": "Product 104",
+    "category": "Home",
+    "price": 83.15,
+    "currency": "AUD",
+    "in_stock": 690
+  },
+  {
+    "product_id": 105,
+    "name": "Product 105",
+    "category": "Toys",
+    "price": 945.92,
+    "currency": "AUD",
+    "in_stock": 659
+  },
+  {
+    "product_id": 106,
+    "name": "Product 106",
+    "category": "Electronics",
+    "price": 295.23,
+    "currency": "AUD",
+    "in_stock": 689
+  },
+  {
+    "product_id": 107,
+    "name": "Product 107",
+    "category": "Clothing",
+    "price": 1433.45,
+    "currency": "AUD",
+    "in_stock": 892
+  },
+  {
+    "product_id": 108,
+    "name": "Product 108",
+    "category": "Home",
+    "price": 230.91,
+    "currency": "AUD",
+    "in_stock": 399
+  },
+  {
+    "product_id": 109,
+    "name": "Product 109",
+    "category": "Sports",
+    "price": 1387.97,
+    "currency": "AUD",
+    "in_stock": 251
+  },
+  {
+    "product_id": 110,
+    "name": "Product 110",
+    "category": "Electronics",
+    "price": 1229.59,
+    "currency": "AUD",
+    "in_stock": 229
+  },
+  {
+    "product_id": 111,
+    "name": "Product 111",
+    "category": "Clothing",
+    "price": 432.98,
+    "currency": "AUD",
+    "in_stock": 301
+  },
+  {
+    "product_id": 112,
+    "name": "Product 112",
+    "category": "Sports",
+    "price": 840.58,
+    "currency": "AUD",
+    "in_stock": 784
+  },
+  {
+    "product_id": 113,
+    "name": "Product 113",
+    "category": "Sports",
+    "price": 1064.59,
+    "currency": "AUD",
+    "in_stock": 347
+  },
+  {
+    "product_id": 114,
+    "name": "Product 114",
+    "category": "Toys",
+    "price": 791.96,
+    "currency": "AUD",
+    "in_stock": 66
+  },
+  {
+    "product_id": 115,
+    "name": "Product 115",
+    "category": "Sports",
+    "price": 246.12,
+    "currency": "AUD",
+    "in_stock": 523
+  },
+  {
+    "product_id": 116,
+    "name": "Product 116",
+    "category": "Health",
+    "price": 1320.34,
+    "currency": "AUD",
+    "in_stock": 797
+  },
+  {
+    "product_id": 117,
+    "name": "Product 117",
+    "category": "Health",
+    "price": 1292.83,
+    "currency": "AUD",
+    "in_stock": 2
+  },
+  {
+    "product_id": 118,
+    "name": "Product 118",
+    "category": "Sports",
+    "price": 1284.33,
+    "currency": "AUD",
+    "in_stock": 67
+  },
+  {
+    "product_id": 119,
+    "name": "Product 119",
+    "category": "Home",
+    "price": 1118.3,
+    "currency": "AUD",
+    "in_stock": 532
+  },
+  {
+    "product_id": 120,
+    "name": "Product 120",
+    "category": "Health",
+    "price": 805.93,
+    "currency": "AUD",
+    "in_stock": 974
+  },
+  {
+    "product_id": 121,
+    "name": "Product 121",
+    "category": "Books",
+    "price": 772.91,
+    "currency": "AUD",
+    "in_stock": 90
+  },
+  {
+    "product_id": 122,
+    "name": "Product 122",
+    "category": "Clothing",
+    "price": 543.38,
+    "currency": "AUD",
+    "in_stock": 424
+  },
+  {
+    "product_id": 123,
+    "name": "Product 123",
+    "category": "Sports",
+    "price": 233.69,
+    "currency": "AUD",
+    "in_stock": 50
+  },
+  {
+    "product_id": 124,
+    "name": "Product 124",
+    "category": "Health",
+    "price": 924.5,
+    "currency": "AUD",
+    "in_stock": 817
+  },
+  {
+    "product_id": 125,
+    "name": "Product 125",
+    "category": "Clothing",
+    "price": 289.51,
+    "currency": "AUD",
+    "in_stock": 136
+  },
+  {
+    "product_id": 126,
+    "name": "Product 126",
+    "category": "Sports",
+    "price": 1474.38,
+    "currency": "AUD",
+    "in_stock": 943
+  },
+  {
+    "product_id": 127,
+    "name": "Product 127",
+    "category": "Electronics",
+    "price": 340.97,
+    "currency": "AUD",
+    "in_stock": 495
+  },
+  {
+    "product_id": 128,
+    "name": "Product 128",
+    "category": "Health",
+    "price": 111.18,
+    "currency": "AUD",
+    "in_stock": 763
+  },
+  {
+    "product_id": 129,
+    "name": "Product 129",
+    "category": "Clothing",
+    "price": 1025.97,
+    "currency": "AUD",
+    "in_stock": 434
+  },
+  {
+    "product_id": 130,
+    "name": "Product 130",
+    "category": "Toys",
+    "price": 1019.26,
+    "currency": "AUD",
+    "in_stock": 675
+  },
+  {
+    "product_id": 131,
+    "name": "Product 131",
+    "category": "Electronics",
+    "price": 1056.1,
+    "currency": "AUD",
+    "in_stock": 946
+  },
+  {
+    "product_id": 132,
+    "name": "Product 132",
+    "category": "Clothing",
+    "price": 733.52,
+    "currency": "AUD",
+    "in_stock": 134
+  },
+  {
+    "product_id": 133,
+    "name": "Product 133",
+    "category": "Sports",
+    "price": 1094.74,
+    "currency": "AUD",
+    "in_stock": 277
+  },
+  {
+    "product_id": 134,
+    "name": "Product 134",
+    "category": "Health",
+    "price": 967.56,
+    "currency": "AUD",
+    "in_stock": 244
+  },
+  {
+    "product_id": 135,
+    "name": "Product 135",
+    "category": "Books",
+    "price": 987.6,
+    "currency": "AUD",
+    "in_stock": 801
+  },
+  {
+    "product_id": 136,
+    "name": "Product 136",
+    "category": "Electronics",
+    "price": 530.23,
+    "currency": "AUD",
+    "in_stock": 812
+  },
+  {
+    "product_id": 137,
+    "name": "Product 137",
+    "category": "Health",
+    "price": 1399.01,
+    "currency": "AUD",
+    "in_stock": 731
+  },
+  {
+    "product_id": 138,
+    "name": "Product 138",
+    "category": "Books",
+    "price": 172.08,
+    "currency": "AUD",
+    "in_stock": 526
+  },
+  {
+    "product_id": 139,
+    "name": "Product 139",
+    "category": "Books",
+    "price": 720.75,
+    "currency": "AUD",
+    "in_stock": 375
+  },
+  {
+    "product_id": 140,
+    "name": "Product 140",
+    "category": "Clothing",
+    "price": 1371.58,
+    "currency": "AUD",
+    "in_stock": 662
+  },
+  {
+    "product_id": 141,
+    "name": "Product 141",
+    "category": "Books",
+    "price": 908.37,
+    "currency": "AUD",
+    "in_stock": 972
+  },
+  {
+    "product_id": 142,
+    "name": "Product 142",
+    "category": "Electronics",
+    "price": 663.73,
+    "currency": "AUD",
+    "in_stock": 566
+  },
+  {
+    "product_id": 143,
+    "name": "Product 143",
+    "category": "Home",
+    "price": 1360.12,
+    "currency": "AUD",
+    "in_stock": 138
+  },
+  {
+    "product_id": 144,
+    "name": "Product 144",
+    "category": "Electronics",
+    "price": 1260.39,
+    "currency": "AUD",
+    "in_stock": 567
+  },
+  {
+    "product_id": 145,
+    "name": "Product 145",
+    "category": "Books",
+    "price": 171.16,
+    "currency": "AUD",
+    "in_stock": 253
+  },
+  {
+    "product_id": 146,
+    "name": "Product 146",
+    "category": "Home",
+    "price": 1288.35,
+    "currency": "AUD",
+    "in_stock": 120
+  },
+  {
+    "product_id": 147,
+    "name": "Product 147",
+    "category": "Home",
+    "price": 782.18,
+    "currency": "AUD",
+    "in_stock": 717
+  },
+  {
+    "product_id": 148,
+    "name": "Product 148",
+    "category": "Sports",
+    "price": 378.5,
+    "currency": "AUD",
+    "in_stock": 127
+  },
+  {
+    "product_id": 149,
+    "name": "Product 149",
+    "category": "Books",
+    "price": 512.01,
+    "currency": "AUD",
+    "in_stock": 461
+  },
+  {
+    "product_id": 150,
+    "name": "Product 150",
+    "category": "Home",
+    "price": 1182.63,
+    "currency": "AUD",
+    "in_stock": 289
+  },
+  {
+    "product_id": 151,
+    "name": "Product 151",
+    "category": "Clothing",
+    "price": 477.27,
+    "currency": "AUD",
+    "in_stock": 45
+  },
+  {
+    "product_id": 152,
+    "name": "Product 152",
+    "category": "Toys",
+    "price": 1078.93,
+    "currency": "AUD",
+    "in_stock": 896
+  },
+  {
+    "product_id": 153,
+    "name": "Product 153",
+    "category": "Home",
+    "price": 541.21,
+    "currency": "AUD",
+    "in_stock": 309
+  },
+  {
+    "product_id": 154,
+    "name": "Product 154",
+    "category": "Clothing",
+    "price": 907.17,
+    "currency": "AUD",
+    "in_stock": 966
+  },
+  {
+    "product_id": 155,
+    "name": "Product 155",
+    "category": "Toys",
+    "price": 297.27,
+    "currency": "AUD",
+    "in_stock": 0
+  },
+  {
+    "product_id": 156,
+    "name": "Product 156",
+    "category": "Electronics",
+    "price": 1192.1,
+    "currency": "AUD",
+    "in_stock": 372
+  },
+  {
+    "product_id": 157,
+    "name": "Product 157",
+    "category": "Health",
+    "price": 1205.65,
+    "currency": "AUD",
+    "in_stock": 535
+  },
+  {
+    "product_id": 158,
+    "name": "Product 158",
+    "category": "Health",
+    "price": 850.62,
+    "currency": "AUD",
+    "in_stock": 381
+  },
+  {
+    "product_id": 159,
+    "name": "Product 159",
+    "category": "Home",
+    "price": 881.43,
+    "currency": "AUD",
+    "in_stock": 721
+  },
+  {
+    "product_id": 160,
+    "name": "Product 160",
+    "category": "Books",
+    "price": 337.65,
+    "currency": "AUD",
+    "in_stock": 604
+  },
+  {
+    "product_id": 161,
+    "name": "Product 161",
+    "category": "Health",
+    "price": 666.58,
+    "currency": "AUD",
+    "in_stock": 146
+  },
+  {
+    "product_id": 162,
+    "name": "Product 162",
+    "category": "Electronics",
+    "price": 1384.71,
+    "currency": "AUD",
+    "in_stock": 366
+  },
+  {
+    "product_id": 163,
+    "name": "Product 163",
+    "category": "Health",
+    "price": 523.96,
+    "currency": "AUD",
+    "in_stock": 338
+  },
+  {
+    "product_id": 164,
+    "name": "Product 164",
+    "category": "Home",
+    "price": 292.91,
+    "currency": "AUD",
+    "in_stock": 107
+  },
+  {
+    "product_id": 165,
+    "name": "Product 165",
+    "category": "Sports",
+    "price": 1027.6,
+    "currency": "AUD",
+    "in_stock": 352
+  },
+  {
+    "product_id": 166,
+    "name": "Product 166",
+    "category": "Books",
+    "price": 122.38,
+    "currency": "AUD",
+    "in_stock": 220
+  },
+  {
+    "product_id": 167,
+    "name": "Product 167",
+    "category": "Electronics",
+    "price": 1474.63,
+    "currency": "AUD",
+    "in_stock": 666
+  },
+  {
+    "product_id": 168,
+    "name": "Product 168",
+    "category": "Health",
+    "price": 200.48,
+    "currency": "AUD",
+    "in_stock": 222
+  },
+  {
+    "product_id": 169,
+    "name": "Product 169",
+    "category": "Health",
+    "price": 453.69,
+    "currency": "AUD",
+    "in_stock": 527
+  },
+  {
+    "product_id": 170,
+    "name": "Product 170",
+    "category": "Home",
+    "price": 1367.2,
+    "currency": "AUD",
+    "in_stock": 149
+  },
+  {
+    "product_id": 171,
+    "name": "Product 171",
+    "category": "Clothing",
+    "price": 695.93,
+    "currency": "AUD",
+    "in_stock": 593
+  },
+  {
+    "product_id": 172,
+    "name": "Product 172",
+    "category": "Toys",
+    "price": 1207.75,
+    "currency": "AUD",
+    "in_stock": 11
+  },
+  {
+    "product_id": 173,
+    "name": "Product 173",
+    "category": "Health",
+    "price": 667.93,
+    "currency": "AUD",
+    "in_stock": 155
+  },
+  {
+    "product_id": 174,
+    "name": "Product 174",
+    "category": "Clothing",
+    "price": 518.93,
+    "currency": "AUD",
+    "in_stock": 974
+  },
+  {
+    "product_id": 175,
+    "name": "Product 175",
+    "category": "Health",
+    "price": 807.14,
+    "currency": "AUD",
+    "in_stock": 493
+  },
+  {
+    "product_id": 176,
+    "name": "Product 176",
+    "category": "Health",
+    "price": 1009.44,
+    "currency": "AUD",
+    "in_stock": 537
+  },
+  {
+    "product_id": 177,
+    "name": "Product 177",
+    "category": "Toys",
+    "price": 1442.78,
+    "currency": "AUD",
+    "in_stock": 877
+  },
+  {
+    "product_id": 178,
+    "name": "Product 178",
+    "category": "Sports",
+    "price": 879.0,
+    "currency": "AUD",
+    "in_stock": 719
+  },
+  {
+    "product_id": 179,
+    "name": "Product 179",
+    "category": "Sports",
+    "price": 1487.4,
+    "currency": "AUD",
+    "in_stock": 948
+  },
+  {
+    "product_id": 180,
+    "name": "Product 180",
+    "category": "Sports",
+    "price": 266.55,
+    "currency": "AUD",
+    "in_stock": 238
+  },
+  {
+    "product_id": 181,
+    "name": "Product 181",
+    "category": "Sports",
+    "price": 700.59,
+    "currency": "AUD",
+    "in_stock": 954
+  },
+  {
+    "product_id": 182,
+    "name": "Product 182",
+    "category": "Toys",
+    "price": 901.03,
+    "currency": "AUD",
+    "in_stock": 31
+  },
+  {
+    "product_id": 183,
+    "name": "Product 183",
+    "category": "Electronics",
+    "price": 943.99,
+    "currency": "AUD",
+    "in_stock": 205
+  },
+  {
+    "product_id": 184,
+    "name": "Product 184",
+    "category": "Sports",
+    "price": 369.92,
+    "currency": "AUD",
+    "in_stock": 464
+  },
+  {
+    "product_id": 185,
+    "name": "Product 185",
+    "category": "Sports",
+    "price": 1280.23,
+    "currency": "AUD",
+    "in_stock": 173
+  },
+  {
+    "product_id": 186,
+    "name": "Product 186",
+    "category": "Electronics",
+    "price": 347.61,
+    "currency": "AUD",
+    "in_stock": 641
+  },
+  {
+    "product_id": 187,
+    "name": "Product 187",
+    "category": "Books",
+    "price": 11.81,
+    "currency": "AUD",
+    "in_stock": 261
+  },
+  {
+    "product_id": 188,
+    "name": "Product 188",
+    "category": "Electronics",
+    "price": 1419.13,
+    "currency": "AUD",
+    "in_stock": 379
+  },
+  {
+    "product_id": 189,
+    "name": "Product 189",
+    "category": "Sports",
+    "price": 831.26,
+    "currency": "AUD",
+    "in_stock": 377
+  },
+  {
+    "product_id": 190,
+    "name": "Product 190",
+    "category": "Sports",
+    "price": 1227.2,
+    "currency": "AUD",
+    "in_stock": 448
+  },
+  {
+    "product_id": 191,
+    "name": "Product 191",
+    "category": "Books",
+    "price": 661.03,
+    "currency": "AUD",
+    "in_stock": 640
+  },
+  {
+    "product_id": 192,
+    "name": "Product 192",
+    "category": "Home",
+    "price": 510.72,
+    "currency": "AUD",
+    "in_stock": 421
+  },
+  {
+    "product_id": 193,
+    "name": "Product 193",
+    "category": "Books",
+    "price": 237.54,
+    "currency": "AUD",
+    "in_stock": 235
+  },
+  {
+    "product_id": 194,
+    "name": "Product 194",
+    "category": "Clothing",
+    "price": 1294.35,
+    "currency": "AUD",
+    "in_stock": 921
+  },
+  {
+    "product_id": 195,
+    "name": "Product 195",
+    "category": "Sports",
+    "price": 755.81,
+    "currency": "AUD",
+    "in_stock": 420
+  },
+  {
+    "product_id": 196,
+    "name": "Product 196",
+    "category": "Health",
+    "price": 1187.71,
+    "currency": "AUD",
+    "in_stock": 496
+  },
+  {
+    "product_id": 197,
+    "name": "Product 197",
+    "category": "Toys",
+    "price": 1314.47,
+    "currency": "AUD",
+    "in_stock": 909
+  },
+  {
+    "product_id": 198,
+    "name": "Product 198",
+    "category": "Health",
+    "price": 41.73,
+    "currency": "AUD",
+    "in_stock": 10
+  },
+  {
+    "product_id": 199,
+    "name": "Product 199",
+    "category": "Home",
+    "price": 1434.44,
+    "currency": "AUD",
+    "in_stock": 701
+  },
+  {
+    "product_id": 200,
+    "name": "Product 200",
+    "category": "Sports",
+    "price": 313.08,
+    "currency": "AUD",
+    "in_stock": 565
+  }
+]

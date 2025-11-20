@@ -1,0 +1,1 @@
+CREATE EXTERNAL TABLE glue_workshop.customers (...);

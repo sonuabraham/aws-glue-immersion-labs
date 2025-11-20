@@ -1,0 +1,1 @@
+SELECT * FROM glue_workshop.customers LIMIT 10;
