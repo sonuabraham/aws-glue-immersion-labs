@@ -10,6 +10,8 @@ mkdir -p glue-workshop/code
 mkdir -p glue-workshop/data/lab1/csv
 mkdir -p glue-workshop/data/lab1/json
 mkdir -p glue-workshop/data/lab1/eventnotification
+mkdir -p glue-workshop/data/lab2/orders
+mkdir -p glue-workshop/data/lab2/products
 mkdir -p glue-workshop/data/lab2/pii
 mkdir -p glue-workshop/data/lab2/state
 mkdir -p glue-workshop/data/lab4/json
@@ -92,6 +94,54 @@ else
     echo "Note: labs/lab2/data folder not found. Lab 2 data will not be included."
     echo "You can add your own customers.csv and products.json to glue-workshop/data/lab2/"
 fi
+
+# Create Lab 2 orders/transactions data for advanced transformations
+cat > glue-workshop/data/lab2/orders/orders.csv << 'EOF'
+order_id,customer_id,order_date,product_id,quantity,unit_price,total_amount,status,payment_method,shipping_address
+ORD001,1001,2024-01-15,101,2,29.99,59.98,completed,credit_card,123 Main St New York NY 10001
+ORD002,1002,2024-01-16,102,1,149.99,149.99,completed,paypal,456 Oak Ave Los Angeles CA 90001
+ORD003,1003,2024-01-16,103,3,19.99,59.97,pending,credit_card,789 Pine Rd Chicago IL 60601
+ORD004,1001,2024-01-17,104,1,299.99,299.99,completed,debit_card,123 Main St New York NY 10001
+ORD005,1004,2024-01-17,105,2,49.99,99.98,shipped,credit_card,321 Elm St Houston TX 77001
+ORD006,1005,2024-01-18,101,1,29.99,29.99,completed,paypal,654 Maple Dr Phoenix AZ 85001
+ORD007,1002,2024-01-18,106,4,9.99,39.96,cancelled,credit_card,456 Oak Ave Los Angeles CA 90001
+ORD008,1006,2024-01-19,107,1,199.99,199.99,completed,credit_card,987 Cedar Ln Philadelphia PA 19101
+ORD009,1007,2024-01-19,108,2,79.99,159.98,shipped,debit_card,147 Birch Ct San Antonio TX 78201
+ORD010,1003,2024-01-20,109,1,399.99,399.99,completed,credit_card,789 Pine Rd Chicago IL 60601
+ORD011,1008,2024-01-20,110,3,24.99,74.97,pending,paypal,258 Spruce Way San Diego CA 92101
+ORD012,1009,2024-01-21,101,2,29.99,59.98,completed,credit_card,369 Willow Pl Dallas TX 75201
+ORD013,1010,2024-01-21,111,1,599.99,599.99,shipped,debit_card,741 Ash Blvd San Jose CA 95101
+ORD014,1001,2024-01-22,112,5,14.99,74.95,completed,credit_card,123 Main St New York NY 10001
+ORD015,1004,2024-01-22,113,1,89.99,89.99,completed,paypal,321 Elm St Houston TX 77001
+ORD016,1005,2024-01-23,114,2,34.99,69.98,cancelled,credit_card,654 Maple Dr Phoenix AZ 85001
+ORD017,1006,2024-01-23,115,1,449.99,449.99,completed,debit_card,987 Cedar Ln Philadelphia PA 19101
+ORD018,1002,2024-01-24,116,3,19.99,59.97,shipped,credit_card,456 Oak Ave Los Angeles CA 90001
+ORD019,1007,2024-01-24,117,1,129.99,129.99,completed,paypal,147 Birch Ct San Antonio TX 78201
+ORD020,1008,2024-01-25,118,2,54.99,109.98,pending,credit_card,258 Spruce Way San Diego CA 92101
+EOF
+
+# Create Lab 2 product catalog for joins
+cat > glue-workshop/data/lab2/products/products.csv << 'EOF'
+product_id,product_name,category,brand,price,cost,stock_quantity,supplier_id,last_updated
+101,Wireless Mouse,Electronics,TechBrand,29.99,15.00,500,SUP001,2024-01-01
+102,Laptop Stand,Electronics,OfficePro,149.99,75.00,200,SUP002,2024-01-01
+103,USB Cable,Electronics,TechBrand,19.99,8.00,1000,SUP001,2024-01-01
+104,Mechanical Keyboard,Electronics,KeyMaster,299.99,150.00,150,SUP003,2024-01-01
+105,Desk Lamp,Furniture,LightCo,49.99,25.00,300,SUP004,2024-01-01
+106,Notebook,Stationery,PaperPlus,9.99,3.00,800,SUP005,2024-01-01
+107,Monitor 27inch,Electronics,ScreenTech,199.99,100.00,100,SUP002,2024-01-01
+108,Office Chair,Furniture,ComfortSeats,79.99,40.00,75,SUP004,2024-01-01
+109,Tablet,Electronics,TechBrand,399.99,200.00,120,SUP001,2024-01-01
+110,Pen Set,Stationery,WriteWell,24.99,10.00,600,SUP005,2024-01-01
+111,Webcam HD,Electronics,VisionPro,599.99,300.00,80,SUP003,2024-01-01
+112,Sticky Notes,Stationery,PaperPlus,14.99,5.00,1200,SUP005,2024-01-01
+113,Headphones,Electronics,AudioMax,89.99,45.00,250,SUP001,2024-01-01
+114,Desk Organizer,Furniture,OfficePro,34.99,18.00,400,SUP004,2024-01-01
+115,Printer,Electronics,PrintMaster,449.99,225.00,60,SUP002,2024-01-01
+116,Whiteboard Markers,Stationery,WriteWell,19.99,8.00,900,SUP005,2024-01-01
+117,Standing Desk,Furniture,ErgoDesk,129.99,65.00,50,SUP004,2024-01-01
+118,External SSD,Electronics,StoragePro,54.99,28.00,300,SUP003,2024-01-01
+EOF
 
 # Create Lab 2 PII data for redaction/hashing transformations
 cat > glue-workshop/data/lab2/pii/customers_pii.csv << 'EOF'
