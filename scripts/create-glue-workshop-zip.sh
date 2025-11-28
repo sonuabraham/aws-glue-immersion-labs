@@ -16,6 +16,7 @@ mkdir -p glue-workshop/data/lab2/pii
 mkdir -p glue-workshop/data/lab2/state
 mkdir -p glue-workshop/data/lab4/json
 mkdir -p glue-workshop/data/lab5/json
+mkdir -p glue-workshop/data/lab6/country_lookup
 mkdir -p glue-workshop/library
 mkdir -p glue-workshop/airflow/dags
 mkdir -p glue-workshop/airflow/plugins
@@ -94,6 +95,61 @@ else
     echo "Note: labs/lab2/data folder not found. Lab 2 data will not be included."
     echo "You can add your own customers.csv and products.json to glue-workshop/data/lab2/"
 fi
+
+# Create country_lookup data for streaming enrichment (used in Lab 2 streaming and Lab 6)
+cat > glue-workshop/data/lab6/country_lookup/country_codes.csv << 'EOF'
+country_code,country_name,continent,region,population,gdp_usd,currency
+US,United States,North America,Americas,331002651,21427700000000,USD
+CA,Canada,North America,Americas,37742154,1736425000000,CAD
+MX,Mexico,North America,Americas,128932753,1258286000000,MXN
+BR,Brazil,South America,Americas,212559417,1839758000000,BRL
+AR,Argentina,South America,Americas,45195774,449663000000,ARS
+GB,United Kingdom,Europe,Europe,67886011,2827113000000,GBP
+DE,Germany,Europe,Europe,83783942,3846414000000,EUR
+FR,France,Europe,Europe,65273511,2715518000000,EUR
+IT,Italy,Europe,Europe,60461826,2001244000000,EUR
+ES,Spain,Europe,Europe,46754778,1394116000000,EUR
+CN,China,Asia,Asia,1439323776,14722730000000,CNY
+JP,Japan,Asia,Asia,126476461,5081769000000,JPY
+IN,India,Asia,Asia,1380004385,2875142000000,INR
+KR,South Korea,Asia,Asia,51269185,1646739000000,KRW
+SG,Singapore,Asia,Asia,5850342,372062000000,SGD
+AU,Australia,Oceania,Oceania,25499884,1392680000000,AUD
+NZ,New Zealand,Oceania,Oceania,4822233,206928000000,NZD
+ZA,South Africa,Africa,Africa,59308690,351431000000,ZAR
+NG,Nigeria,Africa,Africa,206139589,448120000000,NGN
+EG,Egypt,Africa,Africa,102334404,303175000000,EGP
+AE,United Arab Emirates,Asia,Middle East,9890402,421142000000,AED
+SA,Saudi Arabia,Asia,Middle East,34813871,792966000000,SAR
+IL,Israel,Asia,Middle East,8655535,395099000000,ILS
+TR,Turkey,Asia,Middle East,84339067,754411000000,TRY
+RU,Russia,Europe,Europe,145934462,1483497000000,RUB
+PL,Poland,Europe,Europe,37846611,594163000000,PLN
+NL,Netherlands,Europe,Europe,17134872,909070000000,EUR
+SE,Sweden,Europe,Europe,10099265,530883000000,SEK
+NO,Norway,Europe,Europe,5421241,403336000000,NOK
+DK,Denmark,Europe,Europe,5792202,348078000000,DKK
+FI,Finland,Europe,Europe,5540720,269654000000,EUR
+CH,Switzerland,Europe,Europe,8654622,703082000000,CHF
+AT,Austria,Europe,Europe,9006398,446314000000,EUR
+BE,Belgium,Europe,Europe,11589623,529606000000,EUR
+IE,Ireland,Europe,Europe,4937786,388698000000,EUR
+PT,Portugal,Europe,Europe,10196709,237686000000,EUR
+GR,Greece,Europe,Europe,10423054,189410000000,EUR
+CZ,Czech Republic,Europe,Europe,10708981,246489000000,CZK
+HU,Hungary,Europe,Europe,9660351,155808000000,HUF
+RO,Romania,Europe,Europe,19237691,248715000000,RON
+TH,Thailand,Asia,Asia,69799978,505982000000,THB
+MY,Malaysia,Asia,Asia,32365999,336330000000,MYR
+ID,Indonesia,Asia,Asia,273523615,1119190000000,IDR
+PH,Philippines,Asia,Asia,109581078,361489000000,PHP
+VN,Vietnam,Asia,Asia,97338579,261921000000,VND
+PK,Pakistan,Asia,Asia,220892340,278221000000,PKR
+BD,Bangladesh,Asia,Asia,164689383,317465000000,BDT
+CL,Chile,South America,Americas,19116201,252940000000,CLP
+CO,Colombia,South America,Americas,50882891,271346000000,COP
+PE,Peru,South America,Americas,32971854,223249000000,PEN
+EOF
 
 # Create Lab 2 orders/transactions data for advanced transformations
 cat > glue-workshop/data/lab2/orders/orders.csv << 'EOF'
