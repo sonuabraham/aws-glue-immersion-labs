@@ -6,7 +6,7 @@
 echo "Creating glue-workshop directory structure..."
 
 # Create directory structure
-mkdir -p glue-workshop/code
+mkdir -p glue-workshop/code/lab2
 mkdir -p glue-workshop/data/lab1/csv
 mkdir -p glue-workshop/data/lab1/json
 mkdir -p glue-workshop/data/lab1/eventnotification
@@ -22,6 +22,156 @@ mkdir -p glue-workshop/airflow/dags
 mkdir -p glue-workshop/airflow/plugins
 mkdir -p glue-workshop/airflow/requirements
 mkdir -p glue-workshop/output
+
+# Create Kinesis producer script for Lab 2 streaming
+cat > glue-workshop/code/lab2/PutRecord_Kinesis.py << 'EOF'
+#!/usr/bin/env python3
+"""
+Script to send sample sales records to Kinesis stream for Glue streaming ETL lab.
+Usage: python PutRecord_Kinesis.py [--stream-name STREAM_NAME] [--region REGION] [--count COUNT]
+"""
+
+import boto3
+import json
+import time
+import random
+import argparse
+from datetime import datetime, timedelta
+
+# Sample data for generating records
+COUNTRIES = ['USA', 'Canada', 'Mexico', 'UK', 'Germany', 'France', 'Italy', 'Spain', 'China', 'Japan', 'India', 'Australia']
+ITEM_TYPES = ['Office Supplies', 'Electronics', 'Beverages', 'Baby Food', 'Cereal', 'Clothes', 'Household', 'Vegetables', 'Fruits', 'Cosmetics']
+SALES_CHANNELS = ['Online', 'Offline']
+ORDER_PRIORITIES = ['H', 'M', 'L', 'C']
+REGIONS = ['North America', 'Europe', 'Asia', 'Oceania', 'South America', 'Africa']
+
+def generate_sales_record():
+    """Generate a random sales record"""
+    uuid = f"{random.randint(100000000, 999999999)}"
+    units_sold = random.randint(1, 10000)
+    unit_price = round(random.uniform(10.0, 1000.0), 2)
+    unit_cost = round(unit_price * random.uniform(0.4, 0.8), 2)
+    total_revenue = round(units_sold * unit_price, 2)
+    total_cost = round(units_sold * unit_cost, 2)
+    total_profit = round(total_revenue - total_cost, 2)
+    
+    order_date = datetime.now() - timedelta(days=random.randint(0, 365))
+    ship_date = order_date + timedelta(days=random.randint(1, 14))
+    
+    record = {
+        'uuid': uuid,
+        'country': random.choice(COUNTRIES),
+        'itemtype': random.choice(ITEM_TYPES),
+        'saleschannel': random.choice(SALES_CHANNELS),
+        'orderpriority': random.choice(ORDER_PRIORITIES),
+        'orderdate': order_date.strftime('%m/%d/%Y'),
+        'region': random.choice(REGIONS),
+        'shipdate': ship_date.strftime('%m/%d/%Y'),
+        'unitssold': str(units_sold),
+        'unitprice': str(unit_price),
+        'unitcost': str(unit_cost),
+        'totalrevenue': str(total_revenue),
+        'totalcost': str(total_cost),
+        'totalprofit': str(total_profit)
+    }
+    
+    return record
+
+def send_to_kinesis(stream_name, region, count=100, delay=0.1):
+    """Send records to Kinesis stream"""
+    kinesis_client = boto3.client('kinesis', region_name=region)
+    
+    print(f"Sending {count} records to Kinesis stream '{stream_name}' in region '{region}'...")
+    print(f"Delay between records: {delay} seconds")
+    print("-" * 80)
+    
+    success_count = 0
+    error_count = 0
+    
+    for i in range(count):
+        try:
+            record = generate_sales_record()
+            
+            response = kinesis_client.put_record(
+                StreamName=stream_name,
+                Data=json.dumps(record),
+                PartitionKey=record['uuid']
+            )
+            
+            success_count += 1
+            
+            if (i + 1) % 10 == 0:
+                print(f"Sent {i + 1}/{count} records... (ShardId: {response['ShardId']})")
+            
+            # Add delay to avoid throttling
+            if delay > 0:
+                time.sleep(delay)
+                
+        except Exception as e:
+            error_count += 1
+            print(f"Error sending record {i + 1}: {str(e)}")
+    
+    print("-" * 80)
+    print(f"✓ Successfully sent: {success_count} records")
+    if error_count > 0:
+        print(f"✗ Failed: {error_count} records")
+    print(f"Total: {count} records")
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Send sample sales records to Kinesis stream for Glue streaming ETL lab'
+    )
+    parser.add_argument(
+        '--stream-name',
+        default='glueworkshop',
+        help='Kinesis stream name (default: glueworkshop)'
+    )
+    parser.add_argument(
+        '--region',
+        default='us-east-1',
+        help='AWS region (default: us-east-1)'
+    )
+    parser.add_argument(
+        '--count',
+        type=int,
+        default=100,
+        help='Number of records to send (default: 100)'
+    )
+    parser.add_argument(
+        '--delay',
+        type=float,
+        default=0.1,
+        help='Delay between records in seconds (default: 0.1)'
+    )
+    parser.add_argument(
+        '--continuous',
+        action='store_true',
+        help='Send records continuously (Ctrl+C to stop)'
+    )
+    
+    args = parser.parse_args()
+    
+    print("=" * 80)
+    print("Kinesis Stream Producer - Glue Workshop Lab 2")
+    print("=" * 80)
+    
+    if args.continuous:
+        print("Running in continuous mode. Press Ctrl+C to stop.")
+        try:
+            while True:
+                send_to_kinesis(args.stream_name, args.region, args.count, args.delay)
+                print("\nWaiting 5 seconds before next batch...")
+                time.sleep(5)
+        except KeyboardInterrupt:
+            print("\n\nStopped by user.")
+    else:
+        send_to_kinesis(args.stream_name, args.region, args.count, args.delay)
+    
+    print("\nDone!")
+
+if __name__ == '__main__':
+    main()
+EOF
 
 # Create sample Glue script
 cat > glue-workshop/code/sample_etl.py << 'EOF'
