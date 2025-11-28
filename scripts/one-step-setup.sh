@@ -11,10 +11,8 @@ echo "
 echo "
 ============================> SETTING UP ENVIROMENT VARIABLES <===========================================================================================================
 "
-#AWS_ACCOUNT_ID=`aws sts get-caller-identity --query Account --output text`
-AWS_ACCOUNT_ID="104612892635"
-#AWS_REGION=`aws configure get region`
-AWS_REGION="us-east-1"
+AWS_ACCOUNT_ID=`aws sts get-caller-identity --query Account --output text`
+AWS_REGION=`aws configure get region`
 BUCKET_NAME=glueworkshop-${AWS_ACCOUNT_ID}-${AWS_REGION}
 echo " "
 echo "export BUCKET_NAME=\"${BUCKET_NAME}\"" >> /home/sonu/.bashrc
