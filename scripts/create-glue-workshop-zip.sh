@@ -10,6 +10,7 @@ mkdir -p glue-workshop/code
 mkdir -p glue-workshop/data/lab1/csv
 mkdir -p glue-workshop/data/lab1/json
 mkdir -p glue-workshop/data/lab1/eventnotification
+mkdir -p glue-workshop/data/lab2/pii
 mkdir -p glue-workshop/data/lab2/state
 mkdir -p glue-workshop/data/lab4/json
 mkdir -p glue-workshop/data/lab5/json
@@ -91,6 +92,21 @@ else
     echo "Note: labs/lab2/data folder not found. Lab 2 data will not be included."
     echo "You can add your own customers.csv and products.json to glue-workshop/data/lab2/"
 fi
+
+# Create Lab 2 PII data for redaction/hashing transformations
+cat > glue-workshop/data/lab2/pii/customers_pii.csv << 'EOF'
+customer_id,first_name,last_name,email,phone,ssn,credit_card,address,city,state,zip_code,date_of_birth,account_number
+1001,John,Smith,john.smith@email.com,555-123-4567,123-45-6789,4532-1234-5678-9010,123 Main St,New York,NY,10001,1985-03-15,ACC1001
+1002,Jane,Doe,jane.doe@email.com,555-234-5678,234-56-7890,5412-2345-6789-0123,456 Oak Ave,Los Angeles,CA,90001,1990-07-22,ACC1002
+1003,Michael,Johnson,michael.j@email.com,555-345-6789,345-67-8901,4716-3456-7890-1234,789 Pine Rd,Chicago,IL,60601,1988-11-30,ACC1003
+1004,Emily,Williams,emily.w@email.com,555-456-7890,456-78-9012,5312-4567-8901-2345,321 Elm St,Houston,TX,77001,1992-05-18,ACC1004
+1005,David,Brown,david.brown@email.com,555-567-8901,567-89-0123,4916-5678-9012-3456,654 Maple Dr,Phoenix,AZ,85001,1987-09-25,ACC1005
+1006,Sarah,Davis,sarah.d@email.com,555-678-9012,678-90-1234,5512-6789-0123-4567,987 Cedar Ln,Philadelphia,PA,19101,1991-12-08,ACC1006
+1007,James,Miller,james.miller@email.com,555-789-0123,789-01-2345,4024-7890-1234-5678,147 Birch Ct,San Antonio,TX,78201,1986-04-14,ACC1007
+1008,Lisa,Wilson,lisa.w@email.com,555-890-1234,890-12-3456,5112-8901-2345-6789,258 Spruce Way,San Diego,CA,92101,1993-08-27,ACC1008
+1009,Robert,Moore,robert.m@email.com,555-901-2345,901-23-4567,4532-9012-3456-7890,369 Willow Pl,Dallas,TX,75201,1989-02-11,ACC1009
+1010,Jennifer,Taylor,jennifer.t@email.com,555-012-3456,012-34-5678,5412-0123-4567-8901,741 Ash Blvd,San Jose,CA,95101,1994-06-19,ACC1010
+EOF
 
 # Create Lab 2 state data (US states for joins)
 cat > glue-workshop/data/lab2/state/states.csv << 'EOF'
