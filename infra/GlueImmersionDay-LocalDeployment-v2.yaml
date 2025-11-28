@@ -275,7 +275,7 @@ Resources:
       AvailabilityZone: !GetAtt WorkshopSubnet1.AvailabilityZone
       DBSubnetGroupName: !Ref MyDBSubnetGroup
       Engine: MySQL
-      EngineVersion: 8.0.32
+      EngineVersion: 8.0.40
       MasterUsername: glueworkshop
       MasterUserPassword: ImmersionsDay
       MultiAZ: 'false'
@@ -330,6 +330,9 @@ Resources:
   # CloudTrail
   Trail:
     Type: AWS::CloudTrail::Trail
+    DependsOn:
+      - S3Bucket
+      - S3BucketPolicy
     Properties:
       TrailName: 'glueworkshop-trail'
       IsLogging: True
@@ -645,49 +648,27 @@ Resources:
       TablePrefix: 'lab5_rds_'
       Configuration: '{"Version":1.0,"CrawlerOutput":{"Partitions":{"AddOrUpdateBehavior":"InheritFromTable"},"Tables":{"AddOrUpdateBehavior":"MergeNewColumns"}}}'
 
-  MLCrawlerSample:
-    Type: AWS::Glue::Crawler
-    Properties:
-      Name: ml-sample-cust-crawler
-      Role: !GetAtt AWSGlueServiceRole.Arn
-      DatabaseName: !Ref GlueCatalogDatabase
-      TablePrefix: ml_
-      Targets:
-        S3Targets:
-          - Path: !Sub "s3://glueworkshop-${AWS::AccountId}-${AWS::Region}/ml-lab/customer_sampling/"
-
-  MLCrawlerBootstrap:
-    Type: AWS::Glue::Crawler
-    Properties:
-      Name: ml-bootstrap-crawler
-      Role: !GetAtt AWSGlueServiceRole.Arn
-      DatabaseName: !Ref GlueCatalogDatabase
-      TablePrefix: ml_to_dedup_
-      Targets:
-        S3Targets:
-          - Path: !Sub "s3://glueworkshop-${AWS::AccountId}-${AWS::Region}/ml-lab/top-customer/"
-
-  Lab8MockCaseCrawler:
-    Type: AWS::Glue::Crawler
-    Properties:
-      Name: lab8-covid-case-count-processed-crawler
-      Role: !GetAtt AWSGlueServiceRole.Arn
-      DatabaseName: !Ref GlueCatalogDatabase
-      TablePrefix: lab8-case-processed-
-      Targets:
-        S3Targets:
-          - Path: !Sub "s3://glueworkshop-${AWS::AccountId}-${AWS::Region}/input/lab1/csv/"
-
-  Lab8MockVaccineCrawler:
-    Type: AWS::Glue::Crawler
-    Properties:
-      Name: lab8-vaccine-case-count-processed-crawler
-      Role: !GetAtt AWSGlueServiceRole.Arn
-      DatabaseName: !Ref GlueCatalogDatabase
-      TablePrefix: lab8-vaccine-processed-
-      Targets:
-        S3Targets:
-          - Path: !Sub "s3://glueworkshop-${AWS::AccountId}-${AWS::Region}/input/lab1/csv/"
+  # Note: ML and Lab8 crawlers removed - they reference S3 paths that don't exist during stack creation
+  # These can be created manually after running the setup script if needed
+  # 
+  # ML Crawlers (create after uploading ML lab data):
+  # aws glue create-crawler --name ml-sample-cust-crawler \
+  #   --role AWSGlueServiceRole-glueworkshop \
+  #   --database-name glueworkshop_cloudformation \
+  #   --table-prefix ml_ \
+  #   --targets '{"S3Targets":[{"Path":"s3://glueworkshop-${AWS::AccountId}-${AWS::Region}/ml-lab/customer_sampling/"}]}'
+  #
+  # aws glue create-crawler --name ml-bootstrap-crawler \
+  #   --role AWSGlueServiceRole-glueworkshop \
+  #   --database-name glueworkshop_cloudformation \
+  #   --table-prefix ml_to_dedup_ \
+  #   --targets '{"S3Targets":[{"Path":"s3://glueworkshop-${AWS::AccountId}-${AWS::Region}/ml-lab/top-customer/"}]}'
+  # These can be created manually after running the setup script if needed for Lab 8
+  # Alternatively, create them via CLI after data is uploaded:
+  # aws glue create-crawler --name lab8-covid-case-count-processed-crawler \
+  #   --role AWSGlueServiceRole-glueworkshop \
+  #   --database-name glueworkshop_cloudformation \
+  #   --targets '{"S3Targets":[{"Path":"s3://glueworkshop-${AWS::AccountId}-${AWS::Region}/input/lab1/csv/"}]}'
 
   # SNS Topics
   Lab8SNSTopicSuccess:

@@ -165,8 +165,9 @@ aws cloudformation delete-stack --stack-name glue-workshop --region <your-region
 
 - The MWAA environment takes 20-30 minutes to create
 - RDS instance creation takes 10-15 minutes
-- Some mock Glue jobs from the original template were removed as they referenced unavailable S3 scripts
-- You can add them back manually if you have the scripts
+- Some mock Glue jobs and crawlers from the original template were removed as they referenced unavailable S3 resources
+- Lab 8 and ML crawlers are not created by CloudFormation (they need data to exist first)
+  - Run `scripts/create-optional-crawlers.sh` after the setup script completes if you need them
 
 ## Support
 

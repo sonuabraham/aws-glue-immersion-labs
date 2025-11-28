@@ -218,6 +218,9 @@ aws cloudformation delete-stack --stack-name glue-workshop --region <your-region
 
 ## 🐛 Troubleshooting
 
+### CloudFormation Stack Failures
+If you encounter `Lab8MockCaseCrawler CREATE_FAILED` errors, you're using an old template. Use `infra/GlueImmersionDay-LocalDeployment-v2.yaml` which has this fixed. See [CloudFormation Troubleshooting Guide](docs/CLOUDFORMATION-TROUBLESHOOTING.md) for details.
+
 ### Access Denied Errors
 Expected for public S3 buckets (COVID-19 data lake). Sample data is provided as fallback.
 
