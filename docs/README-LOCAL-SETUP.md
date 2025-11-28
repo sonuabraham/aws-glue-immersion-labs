@@ -51,7 +51,7 @@ cd ..
 
 This creates:
 - `glue-workshop/code/` - Your Glue ETL scripts
-- `glue-workshop/data/` - Sample data for labs
+- `glue-workshop/data/` - Sample data for labs (Lab 1, Lab 2, Lab 4, Lab 5)
 - `glue-workshop/library/` - Python libraries
 - `glue-workshop/airflow/` - MWAA DAGs and configuration
 

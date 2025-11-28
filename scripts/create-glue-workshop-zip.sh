@@ -10,6 +10,7 @@ mkdir -p glue-workshop/code
 mkdir -p glue-workshop/data/lab1/csv
 mkdir -p glue-workshop/data/lab1/json
 mkdir -p glue-workshop/data/lab1/eventnotification
+mkdir -p glue-workshop/data/lab2/state
 mkdir -p glue-workshop/data/lab4/json
 mkdir -p glue-workshop/data/lab5/json
 mkdir -p glue-workshop/library
@@ -74,6 +75,76 @@ cat > glue-workshop/data/lab1/eventnotification/README.md << 'EOF'
 
 This folder is used for testing S3 event notifications with SQS.
 Upload files here to trigger SQS notifications.
+EOF
+
+# Copy Lab 2 data from labs folder if it exists, otherwise skip
+# Check both relative paths (from scripts/ and from root)
+if [ -d "../labs/lab2/data" ]; then
+    echo "Copying Lab 2 data from labs folder..."
+    cp ../labs/lab2/data/customers.csv glue-workshop/data/lab2/ 2>/dev/null && echo "✓ Copied customers.csv" || echo "Note: customers.csv not found"
+    cp ../labs/lab2/data/products.json glue-workshop/data/lab2/ 2>/dev/null && echo "✓ Copied products.json" || echo "Note: products.json not found"
+elif [ -d "labs/lab2/data" ]; then
+    echo "Copying Lab 2 data from labs folder..."
+    cp labs/lab2/data/customers.csv glue-workshop/data/lab2/ 2>/dev/null && echo "✓ Copied customers.csv" || echo "Note: customers.csv not found"
+    cp labs/lab2/data/products.json glue-workshop/data/lab2/ 2>/dev/null && echo "✓ Copied products.json" || echo "Note: products.json not found"
+else
+    echo "Note: labs/lab2/data folder not found. Lab 2 data will not be included."
+    echo "You can add your own customers.csv and products.json to glue-workshop/data/lab2/"
+fi
+
+# Create Lab 2 state data (US states for joins)
+cat > glue-workshop/data/lab2/state/states.csv << 'EOF'
+state_code,state_name,region,population
+AL,Alabama,South,5024279
+AK,Alaska,West,733391
+AZ,Arizona,West,7151502
+AR,Arkansas,South,3011524
+CA,California,West,39538223
+CO,Colorado,West,5773714
+CT,Connecticut,Northeast,3605944
+DE,Delaware,South,989948
+FL,Florida,South,21538187
+GA,Georgia,South,10711908
+HI,Hawaii,West,1455271
+ID,Idaho,West,1839106
+IL,Illinois,Midwest,12812508
+IN,Indiana,Midwest,6785528
+IA,Iowa,Midwest,3190369
+KS,Kansas,Midwest,2937880
+KY,Kentucky,South,4505836
+LA,Louisiana,South,4657757
+ME,Maine,Northeast,1362359
+MD,Maryland,South,6177224
+MA,Massachusetts,Northeast,7029917
+MI,Michigan,Midwest,10077331
+MN,Minnesota,Midwest,5706494
+MS,Mississippi,South,2961279
+MO,Missouri,Midwest,6154913
+MT,Montana,West,1084225
+NE,Nebraska,Midwest,1961504
+NV,Nevada,West,3104614
+NH,New Hampshire,Northeast,1377529
+NJ,New Jersey,Northeast,9288994
+NM,New Mexico,West,2117522
+NY,New York,Northeast,20201249
+NC,North Carolina,South,10439388
+ND,North Dakota,Midwest,779094
+OH,Ohio,Midwest,11799448
+OK,Oklahoma,South,3959353
+OR,Oregon,West,4237256
+PA,Pennsylvania,Northeast,13002700
+RI,Rhode Island,Northeast,1097379
+SC,South Carolina,South,5118425
+SD,South Dakota,Midwest,886667
+TN,Tennessee,South,6910840
+TX,Texas,South,29145505
+UT,Utah,West,3271616
+VT,Vermont,Northeast,643077
+VA,Virginia,South,8631393
+WA,Washington,West,7705281
+WV,West Virginia,South,1793716
+WI,Wisconsin,Midwest,5893718
+WY,Wyoming,West,576851
 EOF
 
 # Create sample JSON data for lab4
